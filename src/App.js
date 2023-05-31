@@ -3,9 +3,9 @@ import './App.css';
 
 import firebase from 'firebase/compat/app';
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup } from "firebase/auth";
 import 'firebase/compat/firestore';
-import { getFirestore, collection, orderBy, addDoc, serverTimestamp, query, limit, onSnapshot  } from "firebase/firestore";
+import { getFirestore, collection, orderBy, addDoc, serverTimestamp, query, limit } from "firebase/firestore";
 import 'firebase/compat/auth';
 import 'firebase/compat/analytics';
 
@@ -72,7 +72,7 @@ function SignOut() {
 
 function ChatRoom() {
   const dummy = useRef();
-  const messagesRef = collection(firestore,'messages');
+  const messagesRef = collection(firestore, 'messages');
   const messagesQuery = query(messagesRef, orderBy('createdAt', 'asc'), limit(25));
 
   const [messages] = useCollectionData(messagesQuery, { idField: 'id' });
